@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Murillo Campanha — Desenvolvedor Front-end</title>
+    <meta
+      name="description"
+      content="Portfólio de Murillo Campanha, desenvolvedor front-end focado em React e JavaScript."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="nav">
+      <div class="wrap nav__inner">
+        <a href="#top" class="brand">murillo<span>.dev</span></a>
+        <div class="nav__links">
+          <a href="#sobre">Sobre</a>
+          <a href="#projetos">Projetos</a>
+          <a href="#contato">Contato</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero wrap" id="top">
+      <p class="eyebrow reveal">// desenvolvedor front-end</p>
+      <h1 class="reveal">
+        Murillo<br />
+        <span class="grad">Campanha</span>
+      </h1>
+      <p class="hero__role reveal">React · JavaScript · Interfaces web</p>
+      <p class="hero__bio reveal">
+        Transformo ideias em interfaces limpas e funcionais. Foco em código
+        organizado, boa experiência de uso e projetos que vão do layout até a
+        publicação. Atualmente expandindo para o back-end com Java.
+      </p>
+      <div class="hero__cta reveal">
+        <a href="#projetos" class="btn btn--primary">Ver projetos →</a>
+        <a
+          href="https://github.com/MurilloCampanha0"
+          target="_blank"
+          rel="noopener"
+          class="btn btn--ghost"
+          >GitHub</a
+        >
+      </div>
+      <div class="status reveal">
+        <span class="dot"></span> Disponível para novas oportunidades
+      </div>
+    </header>
+
+    <!-- Sobre -->
+    <section id="sobre" class="wrap">
+      <p class="section__label reveal">01 — Sobre</p>
+      <h2 class="section__title reveal">Quem sou</h2>
+      <p class="about__text reveal">
+        Sou desenvolvedor front-end no início da carreira, apaixonado por criar
+        coisas para a web. Construo aplicações com React e JavaScript, do
+        zero até o deploy, sempre buscando deixar o código limpo e a interface
+        agradável. Estou estudando Java para evoluir também no back-end e me
+        tornar um desenvolvedor mais completo.
+      </p>
+
+      <div class="skills">
+        <div class="skill-card reveal">
+          <h3>Front-end</h3>
+          <div class="chips">
+            <span class="chip">HTML</span>
+            <span class="chip">CSS</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">React</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <h3>Ferramentas</h3>
+          <div class="chips">
+            <span class="chip">Vite</span>
+            <span class="chip">Git</span>
+            <span class="chip">GitHub</span>
+            <span class="chip">Vercel</span>
+          </div>
+        </div>
+        <div class="skill-card learning reveal">
+          <h3>Estudando</h3>
+          <div class="chips">
+            <span class="chip">Java</span>
+            <span class="chip">Banco de Dados</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projetos -->
+    <section id="projetos" class="wrap">
+      <p class="section__label reveal">02 — Projetos</p>
+      <h2 class="section__title reveal">O que eu construí</h2>
+
+      <div class="projects">
+        <!-- Finance Dashboard -->
+        <article class="project reveal">
+          <div class="project__bar">
+            <span class="project__dots">
+              <i style="background: #ff5f56"></i>
+              <i style="background: #ffbd2e"></i>
+              <i style="background: #27c93f"></i>
+            </span>
+            <span class="project__url">finance-dashboard.vercel.app</span>
+          </div>
+          <div class="project__body">
+            <h3>💰 Painel de Finanças Pessoais</h3>
+            <p>
+              Aplicação para controlar entradas, saídas e saldo em tempo real.
+              Conta com persistência no navegador, busca, filtros por tipo e
+              resumo dinâmico. Tudo organizado em componentes React.
+            </p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">Vite</span>
+              <span class="tag">localStorage</span>
+              <span class="tag">CSS</span>
+            </div>
+            <div class="project__links">
+              <a
+                class="link link--demo"
+                href="https://finance-dashboard-drab-seven.vercel.app"
+                target="_blank"
+                rel="noopener"
+                >↗ Ver demo</a
+              >
+              <a
+                class="link link--code"
+                href="https://github.com/MurilloCampanha0/Finance-Dashboard"
+                target="_blank"
+                rel="noopener"
+                >&lt;/&gt; Código</a
+              >
+            </div>
+          </div>
+        </article>
+
+        <!-- Calculadora -->
+        <article class="project reveal">
+          <div class="project__bar">
+            <span class="project__dots">
+              <i style="background: #ff5f56"></i>
+              <i style="background: #ffbd2e"></i>
+              <i style="background: #27c93f"></i>
+            </span>
+            <span class="project__url">calculadora.vercel.app</span>
+          </div>
+          <div class="project__body">
+            <h3>🧮 Calculadora</h3>
+            <p>
+              Calculadora com as operações do dia a dia — soma, subtração,
+              multiplicação, divisão e porcentagem — em uma interface limpa
+              inspirada na calculadora do celular.
+            </p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">Vite</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">CSS</span>
+            </div>
+            <div class="project__links">
+              <a
+                class="link link--demo"
+                href="https://finance-dashboard-zo22.vercel.app"
+                target="_blank"
+                rel="noopener"
+                >↗ Ver demo</a
+              >
+              <a
+                class="link link--code"
+                href="https://github.com/MurilloCampanha0"
+                target="_blank"
+                rel="noopener"
+                >&lt;/&gt; Código</a
+              >
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="wrap contact">
+      <p class="section__label reveal">03 — Contato</p>
+      <h2 class="section__title reveal">Vamos conversar</h2>
+      <p class="reveal">
+        Estou aberto a oportunidades e projetos. Se quiser trocar uma ideia ou
+        falar sobre uma vaga, é só chamar.
+      </p>
+      <div class="contact__links reveal">
+        <a class="btn btn--primary" href="murilloleite02@gmail.com"
+          >✉ murilloleite02@gmail.com</a
+        >
+        <a
+          class="btn btn--ghost"
+          href="https://github.com/MurilloCampanha0"
+          target="_blank"
+          rel="noopener"
+          >GitHub</a
+        >
+        <a class="btn btn--ghost" href="https://www.linkedin.com/in/murillo-campanha-leite-aa525b300/" target="_blank" rel="noopener"
+          >LinkedIn</a
+        >
+      </div>
+    </section>
+
+    <footer class="footer">
+      © <span id="year"></span> Murillo Campanha · Feito com HTML, CSS e
+      JavaScript
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
