@@ -1,228 +1,485 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Murillo Campanha — Desenvolvedor Front-end</title>
-    <meta
-      name="description"
-      content="Portfólio de Murillo Campanha, desenvolvedor front-end focado em React e JavaScript."
-    />
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Murillo Campanha — Desenvolvedor Front-End</title>
+<meta name="description" content="Desenvolvedor front-end em São José do Rio Preto. Construo interfaces web com React e JavaScript, do layout até a publicação.">
+<meta name="theme-color" content="#0a0c10">
+<meta property="og:title" content="Murillo Campanha — Desenvolvedor Front-End">
+<meta property="og:description" content="Interfaces web com React e JavaScript, do layout até a publicação.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230a0c10'/><text y='70' x='50' text-anchor='middle' font-size='58' font-weight='bold' font-family='Georgia,serif' fill='%23f0b45f'>M</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#0a0c10;
+  --surface:#10131a;
+  --surface-2:#161a23;
+  --edge:rgba(255,255,255,.075);
+  --edge-forte:rgba(255,255,255,.16);
+  --texto:#e9ebef;
+  --suave:#8d95a3;
+  --fraco:#5f6775;
+  --ambar:#f0b45f;
+  --ambar-fundo:rgba(240,180,95,.11);
+  --rail:320px;
+  --display:'Archivo',system-ui,sans-serif;
+  --corpo:'IBM Plex Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--void);color:var(--texto);
+  font-family:var(--corpo);font-size:17px;line-height:1.7;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+/* textura de grão */
+body::after{
+  content:"";position:fixed;inset:0;z-index:9;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ambar);outline-offset:3px;border-radius:2px}
+::selection{background:rgba(240,180,95,.28)}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
+.pular{position:absolute;left:-999px;background:var(--ambar);color:#0a0c10;padding:.7rem 1.1rem;z-index:99;font-weight:600}
+.pular:focus{left:.6rem;top:.6rem}
 
-    <link rel="stylesheet" href="style.css" />
-  </head>
+/* ---------- painel ---------- */
+.painel{
+  padding:2.4rem 2rem;display:flex;flex-direction:column;gap:2rem;
+  border-right:1px solid var(--edge);background:linear-gradient(180deg,#0d1016,#0a0c10);
+  position:relative;z-index:3;
+}
+.marca{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ambar)}
+.painel h1{
+  font-family:var(--display);font-weight:800;font-size:1.9rem;line-height:1.08;
+  letter-spacing:-.03em;margin:.7rem 0 .45rem;
+}
+.cargo{color:var(--suave);font-size:.95rem;margin:0}
+.status{
+  display:inline-flex;align-items:center;gap:.55rem;margin-top:1.1rem;
+  font-family:var(--mono);font-size:.71rem;letter-spacing:.1em;text-transform:uppercase;color:var(--suave);
+}
+.ponto{width:7px;height:7px;border-radius:50%;background:#57d69a;box-shadow:0 0 0 0 rgba(87,214,154,.55);animation:pulso 2.6s infinite}
+@keyframes pulso{70%{box-shadow:0 0 0 9px rgba(87,214,154,0)}100%{box-shadow:0 0 0 0 rgba(87,214,154,0)}}
 
-  <body>
-    <!-- Navbar -->
-    <nav class="nav">
-      <div class="wrap nav__inner">
-        <a href="#top" class="brand">murillo<span>.dev</span></a>
-        <div class="nav__links">
-          <a href="#sobre">Sobre</a>
-          <a href="#projetos">Projetos</a>
-          <a href="#contato">Contato</a>
+.nav{display:flex;flex-direction:column;gap:.1rem;margin-top:auto}
+.nav a{
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
+  text-decoration:none;color:var(--fraco);padding:.52rem 0 .52rem 2.6rem;position:relative;
+  transition:color .3s ease,padding-left .3s ease;
+}
+.nav a::before{
+  content:"";position:absolute;left:0;top:50%;width:1.5rem;height:1px;background:#2b3340;
+  transition:width .3s ease,background .3s ease;
+}
+.nav a:hover,.nav a.ativo{color:var(--texto);padding-left:3.2rem}
+.nav a:hover::before,.nav a.ativo::before{width:2.4rem;background:var(--ambar)}
+
+.contatos{display:flex;gap:.5rem;flex-wrap:wrap}
+.contatos a{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-decoration:none;
+  border:1px solid var(--edge);padding:.45rem .8rem;border-radius:100px;color:var(--suave);
+  transition:border-color .3s,color .3s,transform .3s,background .3s;
+}
+.contatos a:hover{border-color:rgba(240,180,95,.5);color:var(--ambar);transform:translateY(-2px);background:var(--ambar-fundo)}
+
+/* ---------- seções ---------- */
+.secao{padding:5.5rem 2rem;max-width:960px;margin:0 auto;position:relative}
+.rotulo{
+  font-family:var(--mono);font-size:.71rem;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ambar);margin:0 0 1.6rem;display:flex;align-items:center;gap:.9rem;
+}
+.rotulo::after{content:"";flex:1;height:1px;background:var(--edge)}
+h2{font-family:var(--display);font-weight:700;font-size:clamp(1.6rem,3.6vw,2.2rem);line-height:1.14;letter-spacing:-.025em;margin:0 0 1.4rem}
+p{margin:0 0 1.15rem;max-width:64ch;color:#c3c9d3}
+.claro{color:var(--texto)}
+
+/* hero */
+.hero{padding-top:7rem;padding-bottom:6.5rem;overflow:visible}
+.hero::before{
+  content:"";position:absolute;top:-140px;left:-160px;width:620px;height:620px;z-index:-1;
+  background:radial-gradient(circle,rgba(240,180,95,.16),transparent 62%);
+  filter:blur(30px);pointer-events:none;
+}
+.frase{
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(2.3rem,5.9vw,4rem);line-height:1.03;letter-spacing:-.042em;
+  margin:0 0 1.9rem;max-width:18ch;
+  background:linear-gradient(168deg,#ffffff 30%,#9aa3b2);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.frase em{font-style:normal;background:linear-gradient(180deg,var(--ambar),#c98b2e);-webkit-background-clip:text;background-clip:text;color:transparent}
+.apoio{font-size:1.11rem;max-width:56ch}
+.acoes{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:2.3rem}
+.btn{
+  display:inline-flex;align-items:center;gap:.55rem;text-decoration:none;
+  font-family:var(--mono);font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;
+  padding:.9rem 1.6rem;border-radius:3px;border:1px solid var(--edge-forte);
+  transition:transform .3s ease,box-shadow .3s ease,background .3s ease,border-color .3s ease,color .3s ease;
+}
+.btn-cheio{background:var(--ambar);color:#0a0c10;border-color:var(--ambar);font-weight:600}
+.btn-cheio:hover{transform:translateY(-3px);box-shadow:0 14px 30px -12px rgba(240,180,95,.45)}
+.btn-vazio{color:var(--texto)}
+.btn-vazio:hover{transform:translateY(-3px);border-color:var(--ambar);color:var(--ambar);background:var(--ambar-fundo)}
+
+/* percurso */
+.trilha{list-style:none;margin:0;padding:0 0 0 1.9rem;position:relative}
+.trilha::before{content:"";position:absolute;left:5px;top:.7rem;bottom:.7rem;width:1px;background:var(--edge)}
+.trilha li{position:relative;padding-bottom:1.9rem}
+.trilha li:last-child{padding-bottom:0}
+.trilha li::before{
+  content:"";position:absolute;left:-1.9rem;top:.62rem;width:11px;height:11px;border-radius:50%;
+  background:var(--void);border:2px solid #2b3340;
+}
+.trilha li.agora::before{border-color:var(--ambar);background:var(--ambar);box-shadow:0 0 14px rgba(240,180,95,.6)}
+.quando{font-family:var(--mono);font-size:.73rem;letter-spacing:.07em;color:var(--ambar);display:block}
+.oque{font-weight:600;display:block;margin-top:.15rem;color:var(--texto)}
+.onde{color:var(--suave);font-size:.94rem}
+
+/* competências */
+.grupos{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1.7rem;margin-top:2.3rem}
+.grupo h3{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--fraco);margin:0 0 .85rem;font-weight:500}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.tag{
+  font-family:var(--mono);font-size:.75rem;padding:.32rem .7rem;color:var(--suave);
+  border:1px solid var(--edge);border-radius:3px;background:var(--surface);
+  transition:border-color .25s,color .25s,transform .25s;
+}
+.tag:hover{border-color:rgba(240,180,95,.45);color:var(--ambar);transform:translateY(-2px)}
+
+/* projetos */
+.projetos{display:flex;flex-direction:column;gap:1.3rem}
+.proj{
+  position:relative;isolation:isolate;
+  display:grid;grid-template-columns:250px 1fr;gap:2rem;align-items:center;
+  background:var(--surface);border:1px solid var(--edge);border-radius:6px;padding:1.7rem;
+  transition:transform .4s cubic-bezier(.2,.7,.3,1),background .4s;
+}
+.proj:hover{transform:translateY(-5px);background:var(--surface-2)}
+/* borda que acende onde o cursor está */
+.proj::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;z-index:-1;
+  background:radial-gradient(240px circle at var(--mx,50%) var(--my,50%),rgba(240,180,95,.75),transparent 62%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite:exclude;
+  opacity:0;transition:opacity .4s;pointer-events:none;
+}
+.proj::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;z-index:-1;
+  background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),rgba(240,180,95,.07),transparent 60%);
+  opacity:0;transition:opacity .4s;pointer-events:none;
+}
+.proj:hover::before,.proj:hover::after{opacity:1}
+.proj h3{font-family:var(--display);font-weight:700;font-size:1.22rem;margin:0 0 .5rem;letter-spacing:-.015em}
+.proj p{font-size:.95rem;color:var(--suave);margin:0 0 1.1rem;max-width:52ch}
+.links{display:flex;gap:1.3rem;flex-wrap:wrap}
+.links a{
+  font-family:var(--mono);font-size:.75rem;letter-spacing:.05em;text-decoration:none;color:var(--texto);
+  border-bottom:1px solid rgba(240,180,95,.55);padding-bottom:2px;transition:color .25s,border-color .25s;
+}
+.links a:hover{color:var(--ambar);border-color:var(--ambar)}
+.pilha{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:1rem}
+.pilha span{font-family:var(--mono);font-size:.7rem;color:var(--fraco)}
+.pilha span:not(:last-child)::after{content:"·";margin-left:.35rem}
+
+/* miniaturas em CSS */
+.tela{background:#080a0e;border:1px solid var(--edge);border-radius:5px;overflow:hidden}
+.barra{display:flex;gap:5px;padding:8px 10px;background:#0d1016;border-bottom:1px solid var(--edge)}
+.barra i{width:7px;height:7px;border-radius:50%;background:#242c38;display:block}
+.corpo{padding:12px;display:flex;flex-direction:column;gap:7px;height:132px}
+.l{background:#222a36;border-radius:2px;height:8px;display:block}
+.l.curta{width:45%}
+.l.media{width:68%}
+.l.destaque{background:var(--ambar);opacity:.75;transition:width .55s ease,opacity .35s}
+.linha{display:flex;align-items:center;gap:7px}
+.bola{width:16px;height:16px;border-radius:50%;background:#252d3a;flex:none}
+.campo{background:#11151c;border:1px solid #232b37;border-radius:3px;height:19px;display:flex;align-items:center;padding:0 7px}
+.cursor{width:1px;height:9px;background:var(--ambar);animation:piscar 1.1s steps(1) infinite}
+@keyframes piscar{50%{opacity:0}}
+.cartoes{display:flex;gap:6px}
+.cartao{flex:1;background:#141922;border-radius:3px;height:26px;padding:5px}
+.cartao .l{height:5px}
+.teclas{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;flex:1}
+.teclas b{background:#141922;border-radius:2px;display:block;transition:background .3s}
+.teclas b.op{background:var(--ambar);opacity:.65;transition:opacity .3s}
+.visor{background:#05070a;border-radius:3px;height:26px;display:flex;align-items:center;justify-content:flex-end;padding:0 8px}
+.visor .l{width:38%;height:7px;background:var(--ambar);opacity:.75}
+.proj:hover .l.destaque{width:82%;opacity:1}
+.proj:hover .teclas b.op{opacity:1}
+.proj:hover .tela{border-color:rgba(240,180,95,.25)}
+
+/* contato */
+.contato-cx{
+  border:1px solid var(--edge);border-radius:8px;padding:3rem 2rem;text-align:center;position:relative;overflow:hidden;
+  background:radial-gradient(120% 140% at 50% 0%,rgba(240,180,95,.09),transparent 58%),var(--surface);
+}
+.contato-cx p{margin-left:auto;margin-right:auto}
+.email-grande{
+  display:inline-block;font-family:var(--display);font-weight:700;
+  font-size:clamp(1.05rem,3.4vw,1.7rem);letter-spacing:-.02em;
+  color:var(--ambar);text-decoration:none;margin-top:.6rem;
+  border-bottom:2px solid transparent;transition:border-color .35s;
+}
+.email-grande:hover{border-bottom-color:var(--ambar)}
+.rodape{padding:2.4rem;text-align:center;font-family:var(--mono);font-size:.72rem;color:var(--fraco);letter-spacing:.06em;border-top:1px solid var(--edge)}
+
+/* reveal */
+.rev{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.3,1)}
+.rev.vis{opacity:1;transform:none}
+
+/* layout */
+@media (min-width:1000px){
+  body{display:grid;grid-template-columns:var(--rail) 1fr}
+  .painel{position:sticky;top:0;height:100vh}
+  .secao{padding-left:4.5rem;padding-right:4.5rem;margin:0;max-width:900px}
+}
+@media (max-width:999px){
+  .painel{gap:1.4rem}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:.2rem 1.5rem;margin-top:.4rem}
+  .nav a{padding:.3rem 0}
+  .nav a::before{display:none}
+  .nav a:hover,.nav a.ativo{padding-left:0}
+  .secao{padding:4rem 1.5rem}
+  .hero{padding-top:3.5rem}
+}
+@media (max-width:620px){
+  .proj{grid-template-columns:1fr;gap:1.3rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .rev{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<aside class="painel">
+  <div>
+    <span class="marca">Portfólio</span>
+    <h1>Murillo<br>Campanha</h1>
+    <p class="cargo">Desenvolvedor Front-End</p>
+    <span class="status"><span class="ponto"></span>Aberto a oportunidades</span>
+  </div>
+
+  <nav class="nav" aria-label="Seções">
+    <a href="#inicio">Início</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#percurso">Percurso</a>
+    <a href="#projetos">Projetos</a>
+    <a href="#contato">Contato</a>
+  </nav>
+
+  <div class="contatos">
+    <a href="https://github.com/MurilloCampanha0" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/murillo-campanha-leite-aa525b300/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:murilloleite02@gmail.com">E-mail</a>
+  </div>
+</aside>
+
+<main id="conteudo">
+
+  <section class="secao hero" id="inicio">
+    <p class="rotulo">São José do Rio Preto, SP</p>
+    <h2 class="frase rev">Vim do suporte técnico. Hoje construo a <em>interface</em> do outro lado da tela.</h2>
+    <p class="apoio rev">Passei mais de um ano atendendo chamados, resolvendo incidentes e mantendo a operação de pé. Aprendi ali o que a maioria dos tutoriais não ensina: como o usuário realmente usa o sistema. Agora aplico isso construindo aplicações com React e JavaScript, do layout até a publicação.</p>
+    <div class="acoes rev">
+      <a class="btn btn-cheio" href="#projetos">Ver projetos</a>
+      <a class="btn btn-vazio" href="curriculo.pdf" target="_blank" rel="noopener">Baixar currículo</a>
+    </div>
+  </section>
+
+  <section class="secao" id="sobre">
+    <p class="rotulo">Sobre</p>
+    <h2 class="rev">Quem sou</h2>
+    <p class="rev">Sou desenvolvedor front-end, formado em Análise e Desenvolvimento de Sistemas e cursando pós-graduação em Matriz de Software pela UNIRP. Construo aplicações em React do zero até o deploy, com atenção a código organizado e a interfaces que fazem sentido para quem usa.</p>
+    <p class="rev">Antes de programar, trabalhei com suporte técnico em ambiente corporativo — hardware, redes, backup e atendimento a usuários. Essa vivência me deu algo que raramente se aprende só estudando: paciência para investigar um problema antes de tentar resolvê-lo. Hoje estudo back-end, APIs e banco de dados para atuar de ponta a ponta.</p>
+
+    <div class="grupos">
+      <div class="grupo rev">
+        <h3>Front-end</h3>
+        <div class="tags"><span class="tag">React</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">HTML5</span><span class="tag">CSS3</span></div>
+      </div>
+      <div class="grupo rev">
+        <h3>Ferramentas</h3>
+        <div class="tags"><span class="tag">Vite</span><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Vercel</span><span class="tag">VS Code</span></div>
+      </div>
+      <div class="grupo rev">
+        <h3>Estudando</h3>
+        <div class="tags"><span class="tag">Java</span><span class="tag">APIs REST</span><span class="tag">SQL</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao" id="percurso">
+    <p class="rotulo">Percurso</p>
+    <h2 class="rev">Do chamado ao código</h2>
+    <ul class="trilha">
+      <li class="agora rev">
+        <span class="quando">2026 — em andamento</span>
+        <span class="oque">Pós-graduação em Matriz de Software</span>
+        <span class="onde">UNIRP · construindo projetos próprios em React</span>
+      </li>
+      <li class="rev">
+        <span class="quando">Fev 2026 — Mai 2026</span>
+        <span class="oque">Técnico de Informática</span>
+        <span class="onde">G4F · suporte a usuários e equipes corporativas</span>
+      </li>
+      <li class="rev">
+        <span class="quando">Set 2024 — Nov 2025</span>
+        <span class="oque">Técnico de TI</span>
+        <span class="onde">Studio Metal · infraestrutura, hardware, redes e chamados</span>
+      </li>
+      <li class="rev">
+        <span class="quando">Concluído</span>
+        <span class="oque">Análise e Desenvolvimento de Sistemas</span>
+        <span class="onde">UNIP</span>
+      </li>
+    </ul>
+  </section>
+
+  <section class="secao" id="projetos">
+    <p class="rotulo">Projetos</p>
+    <h2 class="rev">O que eu construí</h2>
+
+    <div class="projetos">
+
+      <article class="proj rev">
+        <div class="tela" aria-hidden="true">
+          <div class="barra"><i></i><i></i><i></i></div>
+          <div class="corpo">
+            <div class="campo"><span class="cursor"></span></div>
+            <div class="linha"><span class="bola"></span><span class="l media"></span></div>
+            <div class="linha"><span class="bola"></span><span class="l curta"></span></div>
+            <div class="linha"><span class="bola"></span><span class="l destaque" style="width:52%"></span></div>
+          </div>
         </div>
-      </div>
-    </nav>
-
-    <!-- Hero -->
-    <header class="hero wrap" id="top">
-      <p class="eyebrow reveal">// desenvolvedor front-end</p>
-      <h1 class="reveal">
-        Murillo<br />
-        <span class="grad">Campanha</span>
-      </h1>
-      <p class="hero__role reveal">React · JavaScript · Interfaces web</p>
-      <p class="hero__bio reveal">
-        Transformo ideias em interfaces limpas e funcionais. Foco em código
-        organizado, boa experiência de uso e projetos que vão do layout até a
-        publicação. Atualmente expandindo para o back-end com Java.
-      </p>
-      <div class="hero__cta reveal">
-        <a href="#projetos" class="btn btn--primary">Ver projetos →</a>
-        <a
-          href="https://github.com/MurilloCampanha0"
-          target="_blank"
-          rel="noopener"
-          class="btn btn--ghost"
-          >GitHub</a
-        >
-      </div>
-      <div class="status reveal">
-        <span class="dot"></span> Disponível para novas oportunidades
-      </div>
-    </header>
-
-    <!-- Sobre -->
-    <section id="sobre" class="wrap">
-      <p class="section__label reveal">01 — Sobre</p>
-      <h2 class="section__title reveal">Quem sou</h2>
-      <p class="about__text reveal">
-        Sou desenvolvedor front-end no início da carreira, apaixonado por criar
-        coisas para a web. Construo aplicações com React e JavaScript, do
-        zero até o deploy, sempre buscando deixar o código limpo e a interface
-        agradável. Estou estudando Java para evoluir também no back-end e me
-        tornar um desenvolvedor mais completo.
-      </p>
-
-      <div class="skills">
-        <div class="skill-card reveal">
-          <h3>Front-end</h3>
-          <div class="chips">
-            <span class="chip">HTML</span>
-            <span class="chip">CSS</span>
-            <span class="chip">JavaScript</span>
-            <span class="chip">React</span>
+        <div>
+          <h3>Buscador GitHub</h3>
+          <div class="pilha"><span>React</span><span>API REST</span><span>Vite</span></div>
+          <p>Busca qualquer perfil do GitHub e lista os repositórios mais estrelados. Consome a API pública, trata carregamento e erro de usuário não encontrado.</p>
+          <div class="links">
+            <a href="https://buscador-git-hub-alpha.vercel.app/" target="_blank" rel="noopener">Ver demo ↗</a>
+            <a href="https://github.com/MurilloCampanha0/Buscador-GitHub" target="_blank" rel="noopener">Código</a>
           </div>
         </div>
-        <div class="skill-card reveal">
-          <h3>Ferramentas</h3>
-          <div class="chips">
-            <span class="chip">Vite</span>
-            <span class="chip">Git</span>
-            <span class="chip">GitHub</span>
-            <span class="chip">Vercel</span>
+      </article>
+
+      <article class="proj rev">
+        <div class="tela" aria-hidden="true">
+          <div class="barra"><i></i><i></i><i></i></div>
+          <div class="corpo">
+            <div class="cartoes">
+              <div class="cartao"><span class="l curta"></span></div>
+              <div class="cartao"><span class="l curta"></span></div>
+              <div class="cartao"><span class="l destaque curta"></span></div>
+            </div>
+            <div class="linha"><span class="l media"></span></div>
+            <div class="linha"><span class="l curta"></span></div>
+            <div class="linha"><span class="l media"></span></div>
           </div>
         </div>
-        <div class="skill-card learning reveal">
-          <h3>Estudando</h3>
-          <div class="chips">
-            <span class="chip">Java</span>
-            <span class="chip">Banco de Dados</span>
+        <div>
+          <h3>Finanças Pessoais</h3>
+          <div class="pilha"><span>React</span><span>localStorage</span><span>Vite</span></div>
+          <p>Painel para controlar entradas, saídas e saldo em tempo real. Tem filtros por tipo, busca e persistência no navegador, então os dados continuam lá depois de fechar a aba.</p>
+          <div class="links">
+            <a href="https://finance-dashboard-drab-seven.vercel.app" target="_blank" rel="noopener">Ver demo ↗</a>
+            <a href="https://github.com/MurilloCampanha0/Finance-Dashboard" target="_blank" rel="noopener">Código</a>
           </div>
         </div>
+      </article>
+
+      <article class="proj rev">
+        <div class="tela" aria-hidden="true">
+          <div class="barra"><i></i><i></i><i></i></div>
+          <div class="corpo">
+            <div class="visor"><span class="l"></span></div>
+            <div class="teclas">
+              <b></b><b></b><b></b><b class="op"></b>
+              <b></b><b></b><b></b><b class="op"></b>
+              <b></b><b></b><b></b><b class="op"></b>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3>Calculadora</h3>
+          <div class="pilha"><span>React</span><span>Hooks</span><span>CSS</span></div>
+          <p>Calculadora com as quatro operações e porcentagem, feita com componentes e gerenciamento de estado via hooks. Interface inspirada na calculadora do celular.</p>
+          <div class="links">
+            <a href="https://finance-dashboard-zo22.vercel.app" target="_blank" rel="noopener">Ver demo ↗</a>
+            <a href="https://github.com/MurilloCampanha0/Calculadora-em-React" target="_blank" rel="noopener">Código</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="secao" id="contato">
+    <p class="rotulo">Contato</p>
+    <div class="contato-cx rev">
+      <h2>Vamos conversar</h2>
+      <p>Estou aberto a oportunidades como desenvolvedor front-end. Se quiser falar sobre uma vaga ou trocar uma ideia, é só chamar.</p>
+      <a class="email-grande" href="mailto:murilloleite02@gmail.com">murilloleite02@gmail.com</a>
+      <div class="contatos" style="justify-content:center;margin-top:1.7rem">
+        <a href="https://www.linkedin.com/in/murillo-campanha-leite-aa525b300/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/MurilloCampanha0" target="_blank" rel="noopener">GitHub</a>
+        <a href="tel:+5517991207818">(17) 99120-7818</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Projetos -->
-    <section id="projetos" class="wrap">
-      <p class="section__label reveal">02 — Projetos</p>
-      <h2 class="section__title reveal">O que eu construí</h2>
+  <p class="rodape">© <span id="ano"></span> Murillo Campanha · Feito com HTML, CSS e JavaScript</p>
+</main>
 
-      <div class="projects">
-        <!-- Finance Dashboard -->
-        <article class="project reveal">
-          <div class="project__bar">
-            <span class="project__dots">
-              <i style="background: #ff5f56"></i>
-              <i style="background: #ffbd2e"></i>
-              <i style="background: #27c93f"></i>
-            </span>
-            <span class="project__url">finance-dashboard.vercel.app</span>
-          </div>
-          <div class="project__body">
-            <h3>💰 Painel de Finanças Pessoais</h3>
-            <p>
-              Aplicação para controlar entradas, saídas e saldo em tempo real.
-              Conta com persistência no navegador, busca, filtros por tipo e
-              resumo dinâmico. Tudo organizado em componentes React.
-            </p>
-            <div class="tags">
-              <span class="tag">React</span>
-              <span class="tag">Vite</span>
-              <span class="tag">localStorage</span>
-              <span class="tag">CSS</span>
-            </div>
-            <div class="project__links">
-              <a
-                class="link link--demo"
-                href="https://finance-dashboard-drab-seven.vercel.app"
-                target="_blank"
-                rel="noopener"
-                >↗ Ver demo</a
-              >
-              <a
-                class="link link--code"
-                href="https://github.com/MurilloCampanha0/Finance-Dashboard"
-                target="_blank"
-                rel="noopener"
-                >&lt;/&gt; Código</a
-              >
-            </div>
-          </div>
-        </article>
+<script>
+document.getElementById('ano').textContent = new Date().getFullYear();
 
-        <!-- Calculadora -->
-        <article class="project reveal">
-          <div class="project__bar">
-            <span class="project__dots">
-              <i style="background: #ff5f56"></i>
-              <i style="background: #ffbd2e"></i>
-              <i style="background: #27c93f"></i>
-            </span>
-            <span class="project__url">calculadora.vercel.app</span>
-          </div>
-          <div class="project__body">
-            <h3>🧮 Calculadora</h3>
-            <p>
-              Calculadora com as operações do dia a dia — soma, subtração,
-              multiplicação, divisão e porcentagem — em uma interface limpa
-              inspirada na calculadora do celular.
-            </p>
-            <div class="tags">
-              <span class="tag">React</span>
-              <span class="tag">Vite</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">CSS</span>
-            </div>
-            <div class="project__links">
-              <a
-                class="link link--demo"
-                href="https://finance-dashboard-zo22.vercel.app"
-                target="_blank"
-                rel="noopener"
-                >↗ Ver demo</a
-              >
-              <a
-                class="link link--code"
-                href="https://github.com/MurilloCampanha0"
-                target="_blank"
-                rel="noopener"
-                >&lt;/&gt; Código</a
-              >
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
+/* revelar ao rolar */
+const alvos = document.querySelectorAll('.rev');
+if ('IntersectionObserver' in window) {
+  const obs = new IntersectionObserver((itens) => {
+    itens.forEach((item, i) => {
+      if (item.isIntersecting) {
+        setTimeout(() => item.target.classList.add('vis'), i * 90);
+        obs.unobserve(item.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  alvos.forEach(el => obs.observe(el));
+} else {
+  alvos.forEach(el => el.classList.add('vis'));
+}
 
-    <!-- Contato -->
-    <section id="contato" class="wrap contact">
-      <p class="section__label reveal">03 — Contato</p>
-      <h2 class="section__title reveal">Vamos conversar</h2>
-      <p class="reveal">
-        Estou aberto a oportunidades e projetos. Se quiser trocar uma ideia ou
-        falar sobre uma vaga, é só chamar.
-      </p>
-      <div class="contact__links reveal">
-        <a class="btn btn--primary" href="murilloleite02@gmail.com"
-          >✉ murilloleite02@gmail.com</a
-        >
-        <a
-          class="btn btn--ghost"
-          href="https://github.com/MurilloCampanha0"
-          target="_blank"
-          rel="noopener"
-          >GitHub</a
-        >
-        <a class="btn btn--ghost" href="https://www.linkedin.com/in/murillo-campanha-leite-aa525b300/" target="_blank" rel="noopener"
-          >LinkedIn</a
-        >
-      </div>
-    </section>
+/* borda dos cards acompanha o cursor */
+document.querySelectorAll('.proj').forEach(card => {
+  card.addEventListener('pointermove', e => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+    card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+  });
+});
 
-    <footer class="footer">
-      © <span id="year"></span> Murillo Campanha · Feito com HTML, CSS e
-      JavaScript
-    </footer>
-
-    <script src="script.js"></script>
-  </body>
+/* item ativo do menu conforme a rolagem */
+const secoes = document.querySelectorAll('main section[id]');
+const itensNav = document.querySelectorAll('.nav a');
+const marcarAtivo = new IntersectionObserver((itens) => {
+  itens.forEach(item => {
+    if (item.isIntersecting) {
+      itensNav.forEach(a => a.classList.toggle('ativo', a.getAttribute('href') === '#' + item.target.id));
+    }
+  });
+}, { rootMargin: '-45% 0px -50% 0px' });
+secoes.forEach(s => marcarAtivo.observe(s));
+</script>
+</body>
 </html>
